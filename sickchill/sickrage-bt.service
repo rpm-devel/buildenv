@@ -1,0 +1,13 @@
+[Unit]
+Description=SickRage BitTorrent Daemon
+After=network.target
+Requires=mnt-media.mount mnt-torrents.mount sickrage.service
+
+[Service]
+User=root
+Type=notify
+ExecStart=/usr/bin/transmission-daemon -f --log-error -g /var/lib/transmission-daemon/sickrage
+ExecReload=/bin/kill -s HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

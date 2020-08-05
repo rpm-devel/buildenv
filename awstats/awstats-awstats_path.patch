@@ -1,0 +1,38 @@
+From: Chris Caron <lead2gold@gmail.com>
+Date: Tue, 29 Nov 2016 20:33:53 -0500
+Subject: update default path to be more compatible with Linux distro
+Website: http://nuxref.com
+
+Make it so you don't have to pass in the -awstats=/path/to/awstats.pl
+every time any script is called.
+
+---
+
+diff -Naur awstats-7.4/tools/awstats_buildstaticpages.pl awstats-7.4.patched/tools/awstats_buildstaticpages.pl
+--- awstats-7.4/tools/awstats_buildstaticpages.pl	2014-09-23 03:16:09.000000000 -0400
++++ awstats-7.4.patched/tools/awstats_buildstaticpages.pl	2016-11-29 20:33:53.203777945 -0500
+@@ -299,6 +299,10 @@
+ # Check if AWSTATS prog is found
+ my $AwstatsFound=0;
+ if (-s "$Awstats") { $AwstatsFound=1; }
++elsif (-s "/usr/share/awstats/wwwroot/cgi-bin/awstats.pl") {
++	$Awstats="/usr/share/awstats/wwwroot/cgi-bin/awstats.pl";
++	$AwstatsFound=1;
++}
+ elsif (-s "/usr/local/awstats/wwwroot/cgi-bin/awstats.pl") {
+ 	$Awstats="/usr/local/awstats/wwwroot/cgi-bin/awstats.pl";
+ 	$AwstatsFound=1;
+diff -Naur awstats-7.4/tools/awstats_updateall.pl awstats-7.4.patched/tools/awstats_updateall.pl
+--- awstats-7.4/tools/awstats_updateall.pl	2014-09-23 03:16:09.000000000 -0400
++++ awstats-7.4.patched/tools/awstats_updateall.pl	2016-11-29 20:34:58.026745752 -0500
+@@ -129,6 +129,10 @@
+ 	# Check if AWSTATS prog is found
+ 	my $AwstatsFound=0;
+ 	if (-s "$Awstats") { $AwstatsFound=1; }
++	elsif (-s "/usr/share/awstats/wwwroot/cgi-bin/awstats.pl") {
++		$Awstats="/usr/share/awstats/wwwroot/cgi-bin/awstats.pl";
++		$AwstatsFound=1;
++	}
+ 	elsif (-s "/usr/local/awstats/wwwroot/cgi-bin/awstats.pl") {
+ 		$Awstats="/usr/local/awstats/wwwroot/cgi-bin/awstats.pl";
+ 		$AwstatsFound=1;

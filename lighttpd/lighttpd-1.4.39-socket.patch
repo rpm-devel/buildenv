@@ -1,0 +1,11 @@
+--- doc/config/lighttpd.conf~	2016-06-28 12:32:10.000000000 -0500
++++ doc/config/lighttpd.conf	2016-06-28 12:41:50.478761160 -0500
+@@ -67,7 +67,7 @@
+ ## conf.d/fastcgi.conf
+ ## conf.d/scgi.conf
+ ##
+-var.socket_dir  = home_dir + "/sockets"
++var.socket_dir  = state_dir + "/sockets"
+ 
+ ##
+ #######################################################################

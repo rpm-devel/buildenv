@@ -1,0 +1,53 @@
+From 2d8210c772873a6d9c64e019e38c34addc1d1b66 Mon Sep 17 00:00:00 2001
+From: momo-i <webmaster@momo-i.org>
+Date: Sat, 11 Mar 2017 17:24:11 +0900
+Subject: [PATCH 4/4] squid-4.0.18: include guards
+
+---
+ compat/os/linux.h | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/compat/os/linux.h b/compat/os/linux.h
+index 1ab0df5..9e56959 100644
+--- a/compat/os/linux.h
++++ b/compat/os/linux.h
+@@ -45,6 +45,36 @@
+ #endif
+ 
+ /*
++ * Netfilter header madness. (see Bug 4323)
++ *
++ * Netfilter have a history of defining their own versions of network protocol
++ * primitives without sufficient protection against the POSIX defines which are
++ * aways present in Linux.
++ *
++ * netinet/in.h must be included before any other sys header in order to properly
++ * activate include guards in <linux/libc-compat.h> the kernel maintainers added
++ * to workaround it.
++ */
++#if HAVE_NETINET_IN_H
++#include <netinet/in.h>
++#endif
++
++/*
++ * Netfilter header madness. (see Bug 4323)
++ *
++ * Netfilter have a history of defining their own versions of network protocol
++ * primitives without sufficient protection against the POSIX defines which are
++ * aways present in Linux.
++ *
++ * netinet/in.h must be included before any other sys header in order to properly
++ * activate include guards in <linux/libc-compat.h> the kernel maintainers added
++ * to workaround it.
++ */
++#if HAVE_NETINET_IN_H
++#include <netinet/in.h>
++#endif
++
++/*
+  * sys/capability.h is only needed in Linux apparently.
+  *
+  * HACK: LIBCAP_BROKEN Ugly glue to get around linux header madness colliding with glibc
+-- 
+2.9.3
+

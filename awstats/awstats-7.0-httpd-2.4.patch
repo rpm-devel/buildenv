@@ -1,0 +1,45 @@
+diff -up awstats-7.0/tools/httpd_conf.http-2.4 awstats-7.0/tools/httpd_conf
+--- awstats-7.0/tools/httpd_conf.http-2.4	2012-11-16 16:11:07.612386681 +0100
++++ awstats-7.0/tools/httpd_conf	2012-11-16 16:44:24.921755562 +0100
+@@ -10,20 +10,33 @@
+ 
+ #
+ # Directives to add to your Apache conf file to allow use of AWStats as a CGI.
+-# Note that path "/usr/local/awstats/" must reflect your AWStats install path.
++# Note that path "/usr/share/awstats/" must reflect your AWStats install path.
+ #
+-Alias /awstatsclasses "/usr/local/awstats/wwwroot/classes/"
+-Alias /awstatscss "/usr/local/awstats/wwwroot/css/"
+-Alias /awstatsicons "/usr/local/awstats/wwwroot/icon/"
+-ScriptAlias /awstats/ "/usr/local/awstats/wwwroot/cgi-bin/"
++Alias /awstatsclasses "/usr/share/awstats/wwwroot/classes/"
++Alias /awstatscss "/usr/share/awstats/wwwroot/css/"
++Alias /awstatsicons "/usr/share/awstats/wwwroot/icon/"
++ScriptAlias /awstats/ "/usr/share/awstats/wwwroot/cgi-bin/"
+ 
+ 
+ #
+ # This is to permit URL access to scripts/files in AWStats directory.
+ #
+-<Directory "/usr/local/awstats/wwwroot">
++<Directory "/usr/share/awstats/wwwroot">
+     Options None
+     AllowOverride None
+-    Order allow,deny
+-    Allow from all
++    <IfModule mod_authz_core.c>
++        # Apache 2.4	
++        Require local
++    </IfModule>
++    <IfModule !mod_authz_core.c>
++        # Apache 2.2
++        Order allow,deny
++        Allow from 127.0.0.1
++        Allow from ::1
++    </IfModule>
+ </Directory>
++# Additional Perl modules
++<IfModule mod_env.c>
++    SetEnv PERL5LIB /usr/share/awstats/lib:/usr/share/awstats/plugins
++</IfModule>
++

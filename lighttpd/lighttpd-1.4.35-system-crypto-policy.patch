@@ -1,0 +1,11 @@
+--- lighttpd-1.4.35/doc/config/lighttpd.conf~	2014-03-12 11:40:36.000000000 -0500
++++ lighttpd-1.4.35/doc/config/lighttpd.conf	2014-07-07 08:22:46.934838985 -0500
+@@ -417,7 +417,7 @@
+ ##     # Check your cipher list with: openssl ciphers -v '...' (use single quotes as your shell won't like ! in double quotes)
+ ##     #
+ ##     # If you know you have RSA keys (standard), you can use:
+-##     ssl.cipher-list             = "aRSA+HIGH !3DES +kEDH +kRSA !kSRP !kPSK"
++##     ssl.cipher-list             = "PROFILE=SYSTEM"
+ ##     # The more generic version (without the restriction to RSA keys) is
+ ##     # ssl.cipher-list           = "HIGH !aNULL !3DES +kEDH +kRSA !kSRP !kPSK"
+ ##     #

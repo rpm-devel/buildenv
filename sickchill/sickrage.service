@@ -1,0 +1,22 @@
+# Sickrage systemd service unit file
+
+[Unit]
+Description=SickRage Daemon
+After=network.target
+Requires=sickrage-bt.service mnt-media.mount mnt-torrents.mount
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/lib/sickrage
+Environment=VIRTUAL_ENV="/var/lib/sickrage"
+Environment=PATH="$VIRTUAL_ENV/bin:$PATH"
+Environment=HOME=/var/lib/sickrage
+ExecStart=/var/lib/sickrage/bin/sickrage
+Restart=always
+StartLimitBurst=3
+StartLimitInterval=60s
+
+[Install]
+WantedBy=multi-user.target
+
