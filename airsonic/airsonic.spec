@@ -19,8 +19,8 @@ Airsonic is a free, web-based media streamer, providing ubiquitous access to you
 
 %prep
 #wget https://github.com/airsonic/airsonic/releases/download/v%{version}/airsonic.war -O %{SOURCE0}
-#wget https://github.com/airsonic/airsonic/raw/master/contrib/airsonic.service -O %{SOURCE1}
-#wget https://github.com/airsonic/airsonic/raw/master/LICENSE.txt -O %{SOURCE2}
+#wget https://github.com/airsonic/airsonic/raw/main/contrib/airsonic.service -O %{SOURCE1}
+#wget https://github.com/airsonic/airsonic/raw/main/LICENSE.txt -O %{SOURCE2}
 
 %install
 rm -rf $RPM_BUILD_ROOT

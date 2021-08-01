@@ -18,7 +18,7 @@ protect=0
 
 [casjay-extras]
 name=Casjays Extras for server use
-mirrorlist=https://github.com/CasjaysDev/rpm-devel/raw/master/docs/ZREPO/RHEL/rhel/mirrors/extras
+mirrorlist=https://github.com/CasjaysDev/rpm-devel/raw/main/docs/ZREPO/RHEL/rhel/mirrors/extras
 enabled=1
 gpgcheck=1
 gpgkey=https://rpm-devel.sourceforge.io/ZREPO/RHEL/$releasever/keys/RPM-GPG-KEY-casjay
@@ -26,7 +26,7 @@ protect=0
 
 [casjay-rpms]
 name=Casjays RPMs for server use
-mirrorlist=https://github.com/CasjaysDev/rpm-devel/raw/master/docs/ZREPO/RHEL/rhel/mirrors/rpms
+mirrorlist=https://github.com/CasjaysDev/rpm-devel/raw/main/docs/ZREPO/RHEL/rhel/mirrors/rpms
 enabled=1
 gpgcheck=1
 gpgkey=https://rpm-devel.sourceforge.io/ZREPO/RHEL/$releasever/keys/RPM-GPG-KEY-casjay
@@ -34,7 +34,7 @@ protect=0
 
 [casjay-addons]
 name=Casjays Extras for server use
-mirrorlist=https://github.com/CasjaysDev/rpm-devel/raw/master/docs/ZREPO/RHEL/rhel/mirrors/addons
+mirrorlist=https://github.com/CasjaysDev/rpm-devel/raw/main/docs/ZREPO/RHEL/rhel/mirrors/addons
 enabled=0
 gpgcheck=1
 gpgkey=https://rpm-devel.sourceforge.io/ZREPO/RHEL/$releasever/keys/RPM-GPG-KEY-casjay

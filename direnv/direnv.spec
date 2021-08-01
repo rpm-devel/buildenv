@@ -41,7 +41,7 @@ project-specific environment variables without cluttering the
 
 %install
 install -d -p %{buildroot}%{_bindir}
-bin_path="%{buildroot}%{_bindir}" bash -c "$(curl -LsfSq https://github.com/direnv/direnv/raw/master/install.sh)"
+bin_path="%{buildroot}%{_bindir}" bash -c "$(curl -LsfSq https://github.com/direnv/direnv/raw/main/install.sh)"
 
 %check
 #export GOPATH=$(pwd)/gopath
