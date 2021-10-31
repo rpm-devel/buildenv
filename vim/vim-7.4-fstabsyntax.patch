@@ -1,6 +1,7 @@
---- vim74/runtime/syntax/fstab.vim.orig	2013-05-21 16:07:26.000000000 +0200
-+++ vim74/runtime/syntax/fstab.vim	2013-08-12 15:05:43.682707639 +0200
-@@ -53,7 +53,7 @@
+diff -up vim82/runtime/syntax/fstab.vim.fstabsyntax vim82/runtime/syntax/fstab.vim
+--- vim82/runtime/syntax/fstab.vim.fstabsyntax	2020-08-10 12:08:01.000000000 +0200
++++ vim82/runtime/syntax/fstab.vim	2020-08-10 12:17:22.540855735 +0200
+@@ -56,7 +56,7 @@ syn keyword fsMountPointKeyword containe
  " Type
  syn cluster fsTypeCluster contains=fsTypeKeyword,fsTypeUnknown
  syn match fsTypeUnknown /\s\+\zs\w\+/ contained
@@ -9,12 +10,12 @@
  
  " Options
  " -------
-@@ -65,7 +65,7 @@
+@@ -68,7 +68,7 @@ syn match fsOptionsString /[a-zA-Z0-9_-]
  syn keyword fsOptionsYesNo yes no
  syn cluster fsOptionsCheckCluster contains=fsOptionsExt2Check,fsOptionsFatCheck
  syn keyword fsOptionsSize 512 1024 2048
--syn keyword fsOptionsGeneral async atime auto bind current defaults dev devgid devmode devmtime devuid dirsync exec force fstab kudzu loop mand move noatime noauto noclusterr noclusterw nodev nodevmtime nodiratime noexec nomand nosuid nosymfollow nouser owner rbind rdonly remount ro rq rw suid suiddir supermount sw sync union update user users xx
-+syn keyword fsOptionsGeneral async atime auto bind current defaults dev devgid devmode devmtime devuid dirsync exec force fstab kudzu loop managed mand move noatime noauto noclusterr noclusterw nodev nodevmtime nodiratime noexec nomand nosuid nosymfollow nouser owner pamconsole rbind rdonly remount ro rq rw suid suiddir supermount sw sync union update user[s] xx
+-syn keyword fsOptionsGeneral async atime auto bind current defaults dev devgid devmode devmtime devuid dirsync exec force fstab kudzu loop mand move noatime noauto noclusterr noclusterw nodev nodevmtime nodiratime noexec nomand norelatime nosuid nosymfollow nouser owner rbind rdonly relatime remount ro rq rw suid suiddir supermount sw sync union update user users wxallowed xx nofail failok
++syn keyword fsOptionsGeneral async atime auto bind current defaults dev devgid devmode devmtime devuid dirsync exec force fstab kudzu loop managed mand move noatime noauto noclusterr noclusterw nodev nodevmtime nodiratime noexec nomand norelatime nosuid nosymfollow nouser owner pamconsole rbind rdonly relatime remount ro rq rw suid suiddir supermount sw sync union update user users wxallowed xx nofail
  syn match fsOptionsGeneral /_netdev/
  
  " Options: adfs

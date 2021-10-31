@@ -1,0 +1,82 @@
+From 67ee5ab6af622666d8caf4127e945c941698b816 Mon Sep 17 00:00:00 2001
+From: Benno Schulenberg <bensberg@telfort.nl>
+Date: Tue, 29 Jun 2021 12:51:44 +0200
+Subject: [PATCH 1/2] feedback: when not in curses mode, just skip displaying
+ any message
+
+Calling die() could trigger another call of emergency_save(), which
+could fail and cause another call to statusline(), which would call
+die() again...  Spiralling until stack space runs out.
+
+This fixes https://savannah.gnu.org/bugs/?60853.
+
+Bug existed since version 5.1, commit 7942dab0.
+
+Original report was in https://bugzilla.redhat.com/1976410.
+Reported-by: Souptik Dutta Roy <duttaroy.souptik@gmail.com>
+
+Upstream-commit: fc01c5a10ee729d6f82e109890b593aef976205e
+Signed-off-by: Kamil Dudka <kdudka@redhat.com>
+---
+ src/winio.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/winio.c b/src/winio.c
+index 72f4f95..345fb19 100644
+--- a/src/winio.c
++++ b/src/winio.c
+@@ -2255,8 +2255,9 @@ void statusline(message_type importance, const char *msg, ...)
+ 
+ 	UNSET(WHITESPACE_DISPLAY);
+ 
++	/* When not in curses mode, there is no status bar to display anything on. */
+ 	if (isendwin())
+-		die("Out of curses -- please report a bug\n");
++		return;
+ #endif
+ 
+ 	/* Ignore a message with an importance that is lower than the last one. */
+-- 
+2.31.1
+
+
+From 242cde94e13352ef97c048a5c8c6ddbf83d7c9a4 Mon Sep 17 00:00:00 2001
+From: Benno Schulenberg <bensberg@telfort.nl>
+Date: Tue, 29 Jun 2021 13:20:16 +0200
+Subject: [PATCH 2/2] input: give up on the input stream only after millions of
+ errors
+
+This mitigates a problem seen sometimes among the Red Hat crash reports:
+somehow wgetch() keeps returning ERR, as if it were in nodelay mode.
+(I've seen this happen once after nano came out of suspension.)
+
+Using a much larger error-count value gives the user a few seconds
+to type something and hopefully get out of the error condition.
+
+Upstream-commit: 8d1a666dcfbb9e9fcf6ce7a875a4ad4f5ea932ce
+Signed-off-by: Kamil Dudka <kdudka@redhat.com>
+---
+ src/winio.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/winio.c b/src/winio.c
+index 345fb19..744562f 100644
+--- a/src/winio.c
++++ b/src/winio.c
+@@ -233,11 +233,11 @@ void read_keys_from(WINDOW *win)
+ 			}
+ 		}
+ #endif
+-		/* When we've failed to get a keycode over a hundred times in a row,
++		/* When we've failed to get a keycode millions of times in a row,
+ 		 * assume our input source is gone and die gracefully.  We could
+ 		 * check if errno is set to EIO ("Input/output error") and die in
+ 		 * that case, but it's not always set properly.  Argh. */
+-		if (input == ERR && ++errcount == 123)
++		if (input == ERR && ++errcount == 12345678)
+ 			die(_("Too many errors from stdin\n"));
+ 	}
+ 
+-- 
+2.31.1
+

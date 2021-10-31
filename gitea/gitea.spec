@@ -1,5 +1,5 @@
 Name:           gitea
-Version:        1.10.0
+Version:        1.15.6
 Release:        1%{?dist}
 Summary:        Gitea is a painless self-hosted Git service.
 
@@ -8,6 +8,7 @@ URL:            https://gitea.io
 Source0:        https://github.com/go-gitea/gitea/archive/v%{version}.tar.gz
 Source1:	    gitea.service
 Source2:        gitea.ini
+Source3:        themes
 
 BuildRequires:	golang >= 1.8
 BuildRequires:	go-bindata
@@ -30,6 +31,8 @@ mkdir -p src/code.gitea.io
 cp -rav %{name}-%{version}/ src/code.gitea.io/gitea/
 export GOPATH=$(pwd)
 cd src/code.gitea.io/gitea/
+git init
+rm -f $GOPATH/go.mod
 TAGS="bindata sqlite" make generate build
 
 %install
@@ -49,7 +52,6 @@ install -m 644 %{SOURCE2} $RPM_BUILD_ROOT/%{_sysconfdir}/gitea/gitea.ini
 %attr(755,gitea,gitea) %{_sharedstatedir}/gitea/gitea
 %attr(0640,gitea,gitea) %config(noreplace) %{_sysconfdir}/gitea/gitea.ini
 %{_unitdir}/gitea.service
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
