@@ -455,6 +455,7 @@ Summary:        Perl interface to Git
 #BuildArch:      %{BuildArch}
 Requires:       git = %{version}-%{release}
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+Obsoletes:      git-perl-Git
 %description -n perl-Git
 %{summary}.
 

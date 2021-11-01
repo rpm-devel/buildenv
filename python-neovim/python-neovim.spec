@@ -14,7 +14,6 @@ Summary:        %{sum}
 URL:            https://github.com/neovim/python-client
 Source0:        https://github.com/neovim/python-client/archive/%{version}/%{name}-%{version}.tar.gz
 
-BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 %if 0%{?with_python3}

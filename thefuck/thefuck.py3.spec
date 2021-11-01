@@ -38,8 +38,6 @@ Requires: python3-six
 Requires: python3-colorama
 %endif
 
-BuildArch: noarch
-
 %description
 This application corrects your previous console command.
 If you use BASH, you should add these lines to your .bashrc:

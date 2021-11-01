@@ -14,13 +14,8 @@ License:        ASL 2.0
 URL:            http://pypi.python.org/pypi/pbr
 Source0:        https://pypi.io/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
-BuildArch:      noarch
-
-
-
 BuildRequires: python2-sphinx >= 1.1.3
 #BuildRequires: python2-openstackdocstheme
-
 
 %description
 PBR is a library that injects some useful and sensible default behaviors into
