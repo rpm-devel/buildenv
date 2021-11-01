@@ -223,7 +223,7 @@ need to install the vim-common package.
 
 %package filesystem
 Summary: VIM filesystem layout
-BuildArch: noarch
+#BuildArch: %{BuildArch}
 
 %Description filesystem
 This package provides some directories which are required by other
@@ -291,7 +291,7 @@ vim-common package.
 %if %{with default_editor}
 %package default-editor
 Summary: Set vim as the default editor
-BuildArch: noarch
+BuildArch: %{BuildArch}
 Conflicts: system-default-editor
 # conflict with nano-default-editor which doesn't provide system-default-editor
 # remove after F33 is EOL
