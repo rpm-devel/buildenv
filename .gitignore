@@ -3,3 +3,5 @@ ignoredirmessage
 status.txt
 %{name}
 
+# ignore commit message
+.gitcommit
