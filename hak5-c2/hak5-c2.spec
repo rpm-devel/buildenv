@@ -4,7 +4,7 @@ Version: 2.0
 Release: 1%{?dist}
 License: GPLv2
 Group: System Environment/Base
-URL: http://casjaysdev.com/
+URL: http://casjaysdev.pro/
 
 Source0: c2
 Source1: c2.service
@@ -64,6 +64,6 @@ mv -f %{_datarootdir}/%{name}/c2.db %{_datarootdir}/%{name}/c2.old
 %dir %{_datarootdir}/%{name}
 
 %changelog
-* Thu Dec 13 2018 CasjaysDev <rpm-admin@rpm-devel.casjaysdev.com> - 0.1
+* Thu Dec 13 2018 CasjaysDev <rpm-admin@rpm-devel.casjaysdev.pro> - 0.1
 - initial release
 

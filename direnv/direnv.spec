@@ -51,7 +51,7 @@ bin_path="%{buildroot}%{_bindir}" bash -c "$(curl -LsfSq https://github.com/dire
 %{_bindir}/direnv
 
 %changelog
-* Sun Nov 17 2019 CasjaysDev <rpm-devel@casjaysdev.com> - 2.20.0
+* Sun Nov 17 2019 CasjaysDev <rpm-devel@casjaysdev.pro> - 2.20.0
 - Modified script to autoinstall from github package
 
 * Sun Sep 10 2017 Dominic Cleal <dominic@cleal.org> - 2.12.2-1

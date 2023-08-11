@@ -371,7 +371,7 @@ perl -pi -e "s/vimrc/virc/"  os_unix.h
   --disable-pythoninterp --disable-perlinterp --disable-tclinterp \
   --with-tlib=ncurses --enable-gui=no --disable-gpm --exec-prefix=/ \
   --with-compiledby="<rpm-devel@cajsyasdev.com>" \
-  --with-modified-by="<rpm-devel@casjaysdev.com>" \
+  --with-modified-by="<rpm-devel@casjaysdev.pro>" \
   --enable-fips-warning \
   --enable-fail-if-missing \
   --disable-canberra \
@@ -397,9 +397,9 @@ mv -f os_unix.h.save os_unix.h
   --with-tlib=ncurses \
   --enable-gtk3-check --enable-gui=gtk3 \
   --enable-fips-warning \
-  --with-compiledby="<rpm-devel@casjaysdev.com>" \
+  --with-compiledby="<rpm-devel@casjaysdev.pro>" \
   --enable-cscope \
-  --with-modified-by="<rpm-devel@casjaysdev.com>" \
+  --with-modified-by="<rpm-devel@casjaysdev.pro>" \
 %if "%{withnetbeans}" == "1"
   --enable-netbeans \
 %else

@@ -125,7 +125,7 @@ install -Dpm 0644 %{SOURCE13} %{buildroot}%{_datadir}/fish/vendor_conf.d/%{basen
 %endif
 
 %changelog
-* Thu Oct 30 2021 CasjaysDev <rpm-devel@casjaysdev.com> - 5.8.4
+* Thu Oct 30 2021 CasjaysDev <rpm-devel@casjaysdev.pro> - 5.8.4
 - Rebuilt for CentOS 7
 
 * Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 5.8-4
